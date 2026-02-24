@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.trackerfilmsseries.controller.MainController"
+            styleClass="root">
+
+    <!-- ================= HEADER ================= -->
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              styleClass="netflix-header">
+
+            <Label text="Tracker"
+                   styleClass="logo-text"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <TextField fx:id="txtRecherche"
+                       promptText="Rechercher..."
+                       styleClass="search-field"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <VBox spacing="20"
+              style="-fx-padding: 25;">
+
+            <!-- DASHBOARD -->
+            <HBox spacing="25"
+                  alignment="CENTER_LEFT">
+
+                <VBox styleClass="netflix-card">
+                    <Label text="TOTAL"/>
+                    <Label fx:id="lblTotal" styleClass="netflix-number"/>
+                </VBox>
+
+                <VBox styleClass="netflix-card">
+                    <Label text="VUS"/>
+                    <Label fx:id="lblVus" styleClass="netflix-number"/>
+                </VBox>
+
+                <VBox styleClass="netflix-card">
+                    <Label text="EN COURS"/>
+                    <Label fx:id="lblEnCours" styleClass="netflix-number"/>
+                </VBox>
+
+                <VBox styleClass="netflix-card">
+                    <Label text="MOYENNE"/>
+                    <Label fx:id="lblMoyenne" styleClass="netflix-number"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- WATCHLIST -->
+            <VBox spacing="10"
+                  styleClass="watchlist-section">
+
+                <Label text="Ma Watchlist"
+                       styleClass="section-title"/>
+
+                <HBox fx:id="watchlistContainer"
+                      spacing="20"
+                      alignment="CENTER_LEFT"/>
+            </VBox>
+
+            <!-- FILTRES -->
+            <HBox spacing="20"
+                  alignment="CENTER_LEFT">
+
+                <ComboBox fx:id="cbFiltreGenre" promptText="Genre"/>
+                <ComboBox fx:id="cbFiltreStatut" promptText="Statut"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="Reset"
+                        styleClass="netflix-button"
+                        onAction="#handleRefresh"/>
+            </HBox>
+
+            <!-- TABLE (SEULE ZONE QUI GRANDIT) -->
+            <TableView fx:id="tableContenus"
+                       VBox.vgrow="ALWAYS"
+                       styleClass="netflix-table">
+
+                <columns>
+                    <TableColumn fx:id="colTitre" text="Titre" prefWidth="200"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="90"/>
+                    <TableColumn fx:id="colAnnee" text="Année" prefWidth="90"/>
+                    <TableColumn fx:id="colGenre" text="Genre" prefWidth="120"/>
+                    <TableColumn fx:id="colRealisateur" text="Réalisateur" prefWidth="150"/>
+                    <TableColumn fx:id="colStatut" text="Statut" prefWidth="120"/>
+                    <TableColumn fx:id="colNote" text="Note" prefWidth="80"/>
+                    <TableColumn fx:id="colWatchlist" text="Watchlist" prefWidth="100"/>
+                    <TableColumn fx:id="colDateAjout" text="Date Ajout" prefWidth="150"/>
+                    <TableColumn fx:id="colProgression" text="Progression" prefWidth="160"/>
+                </columns>
+
+            </TableView>
+
+        </VBox>
+    </center>
+
+    <!-- ================= FOOTER ================= -->
+    <bottom>
+        <HBox alignment="CENTER"
+              spacing="20"
+              styleClass="netflix-footer">
+
+            <Button text="➕ Ajouter"
+                    styleClass="netflix-button"
+                    onAction="#handleAjouter"/>
+
+            <Button text="✏ Modifier"
+                    styleClass="netflix-button"
+                    onAction="#handleModifier"/>
+
+            <Button text="🗑 Supprimer"
+                    styleClass="netflix-button-danger"
+                    onAction="#handleSupprimer"/>
+
+        </HBox>
+    </bottom>
+
+</BorderPane>
